@@ -21,7 +21,7 @@ try:
 except:
     # 本地调试用
     USER_ID_H_02 = ''
-print('This is：'USER_ID_H_02)
+print('This is：'+USER_ID_H_02)
 exit()
 
 try:
