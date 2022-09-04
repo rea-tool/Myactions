@@ -1,0 +1,25 @@
+name: 'HVV-Test'
+
+on:
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    #runs-on: macos-latest
+    runs-on: macos-12
+
+    steps:
+        - name: 'Checkout codes'
+          uses: actions/checkout@v2
+
+        - name: 'Renew'
+          env:
+            USER_ID_H_01: ${{ secrets.USER_ID_H_02 }}
+            PASS_WD_H_01: ${{ secrets.PASS_WD_H_02 }}
+            BARK_KEY: ${{ secrets.BARK_KEY }}
+            TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+            TG_USER_ID: ${{ secrets.TG_USER_ID }}
+
+          run: |
+            python3 VPS/test.py
