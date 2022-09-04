@@ -12,4 +12,4 @@ except:
     # 本地调试用
     PASS_WD_H_02 = ''
   
-print('This is :' USER_ID_H_02)
+print('This is :'+USER_ID_H_02)
