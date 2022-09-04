@@ -6,7 +6,7 @@ except:
     # 本地调试用
     USER_ID_H_02 = ''
     
- try:
+try:
     PASS_WD_H_02 = os.environ['PASS_WD_H_03']
 except:
     # 本地调试用
