@@ -1,0 +1,42 @@
+name: 'W-Extend-10'
+
+on:
+  #push:
+  schedule:
+    # UTC (国内 UTC+8)
+     - cron: '20 22 * * *'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    #runs-on: macos-12
+
+    steps:
+        - name: 'Checkout codes'
+          uses: actions/checkout@v2
+
+        - name: 'Update Chrome'
+          run: |
+            brew reinstall --cask google-chrome
+
+        - name: 'Install requirements'
+          run: |
+            pip3 install urllib3
+            pip3 install requests
+            pip3 install helium
+            pip3 install undetected-chromedriver
+            pip3 uninstall selenium -y
+            pip3 install selenium==4.2.0
+
+        - name: 'Renew'
+          env:
+            USER_ID: ${{ secrets.USER_ID_W_10 }}
+            PASS_WD: ${{ secrets.PASS_WD_W_10 }}
+            BARK_KEY: ${{ secrets.BARK_KEY }}
+            TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+            TG_USER_ID: ${{ secrets.TG_USER_ID }}
+
+          run: |
+            python3 VPS/main-w-10.py
